@@ -152,8 +152,11 @@ La comparación de estos resultados permite analizar el impacto de cada técnica
 Estos son los resultados obtenidos al ejecutar el programa.
 
 <p align="center">
-<img src="https://github.com/Pablo931597/Master-UC3m/blob/main/Captura%20de%20pantalla%202025-06-18%20a%20las%2019.29.40.png" alt="alt text2" width="500"/>
+<img src="https://github.com/Pablo931597/Master-UC3m/blob/main/Captura%20de%20pantalla%202025-06-18%20a%20las%2019.29.40.png" alt="alt text2" width="300"/>
 </p>
+
+TF-IDF y Word2Vec ofrecen un rendimiento muy similar y limitado, con baja capacidad explicativa y errores altos.
+BERT reduce el error medio, pero su capacidad para generalizar y explicar la variabilidad de los datos es insuficiente en este experimento concreto, probablemente por limitaciones en la cantidad de datos o en la configuración del modelo.
 
 ## Fine-Tuning de un Modelo Transformer con Hugging Face
 
@@ -186,7 +189,7 @@ Se ha implementado un sistema de resumen automático utilizando el pipeline de H
 Para identificar patrones frecuentes en la redacción de las recetas, se ha realizado un análisis de bigramas sobre el campo directions. Tras tokenizar y extraer todos los pares de palabras consecutivas, se calcularon las frecuencias y se identificaron los diez bigramas más comunes. Este análisis revela combinaciones de acciones y términos recurrentes en la cocina, proporcionando información útil sobre la estructura típica de las instrucciones culinarias.
 
 <p align="center">
-<img src="https://github.com/Pablo931597/Master-UC3m/blob/main/Captura%20de%20pantalla%202025-06-18%20a%20las%2020.09.23.png" alt="alt text2" width="500"/>
+<img src="https://github.com/Pablo931597/Master-UC3m/blob/main/Captura%20de%20pantalla%202025-06-18%20a%20las%2020.09.23.png" alt="alt text2" width="300"/>
 </p>
 
 ### 3. Etiquetado gramatical
@@ -194,7 +197,7 @@ Para identificar patrones frecuentes en la redacción de las recetas, se ha real
 Se ha aplicado el etiquetado gramatical a las instrucciones de las recetas utilizando las herramientas de NLTK. Este proceso asigna una categoría gramatical (sustantivo, verbo, adjetivo, etc.) a cada palabra, permitiendo analizar la composición sintáctica de las instrucciones. El etiquetado se ha realizado tanto sobre ejemplos individuales como sobre múltiples instrucciones.
 
 <p align="center">
-<img src="https://github.com/Pablo931597/Master-UC3m/blob/main/Captura%20de%20pantalla%202025-06-18%20a%20las%2020.09.43.png" alt="alt text2" width="500"/>
+<img src="https://github.com/Pablo931597/Master-UC3m/blob/main/Captura%20de%20pantalla%202025-06-18%20a%20las%2020.09.43.png" alt="alt text2" width="300"/>
 </p>
 
 
