@@ -33,7 +33,7 @@ El preprocesamiento de los datos textuales es un paso fundamental para preparar 
 
 En primer lugar, se instalaron y configuraron las librerías necesarias, como NLTK, spaCy y Gensim, que proporcionan herramientas avanzadas para el procesamiento de lenguaje natural. Se descargaron los recursos lingüísticos requeridos, incluyendo modelos de idioma y listas de palabras vacías (stopwords).
 
-El proceso de preprocesamiento comenzó con la unión de las columnas relevantes del conjunto de datos, concretamente las columnas `directions` y `desc`, para formar un único texto representativo de cada receta. Posteriormente, se aplicó una función de preprocesamiento que incluye varias etapas clave:
+El proceso de preprocesamiento comenzó con la unión de las columnas relevantes del conjunto de datos, concretamente las columnas directions y desc, para formar un único texto representativo de cada receta. Posteriormente, se aplicó una función de preprocesamiento que incluye varias etapas clave:
 
 - **Tokenización:** El texto se divide en palabras individuales (tokens), facilitando su análisis posterior.
 - **Limpieza:** Se eliminan caracteres especiales y signos de puntuación, conservando únicamente las palabras alfabéticas y normalizando todo a minúsculas.
@@ -50,7 +50,7 @@ Para transformar los textos de las recetas en una representación numérica adec
 
 El proceso comenzó con la construcción de un modelo TF-IDF utilizando la librería Gensim, a partir del corpus preprocesado. Cada documento fue transformado en un vector de pesos TF-IDF, donde cada posición representa la importancia relativa de una palabra en ese documento. Para ilustrar la interpretación de estos vectores, se extrajeron y visualizaron los términos con mayor peso en el primer documento, lo que permite identificar rápidamente las palabras más representativas de cada receta.
 
-Posteriormente, se utilizó la clase `TfidfVectorizer` de Scikit-learn para generar una matriz TF-IDF de mayor tamaño, limitando el vocabulario a las 2,000 palabras más frecuentes y relevantes del corpus. Esta matriz fue utilizada para analizar la distribución de los pesos TF-IDF en los documentos y para identificar las palabras más influyentes tanto a nivel individual como global. Se calcularon y graficaron las palabras con mayor peso promedio en todo el corpus, lo que proporciona una visión general de los términos más característicos de las recetas analizadas.
+Posteriormente, se utilizó la clase TfidfVectorizer de Scikit-learn para generar una matriz TF-IDF de mayor tamaño, limitando el vocabulario a las 2,000 palabras más frecuentes y relevantes del corpus. Esta matriz fue utilizada para analizar la distribución de los pesos TF-IDF en los documentos y para identificar las palabras más influyentes tanto a nivel individual como global. Se calcularon y graficaron las palabras con mayor peso promedio en todo el corpus, lo que proporciona una visión general de los términos más característicos de las recetas analizadas.
 
 Para explorar la estructura interna de los datos, se aplicó una reducción de dimensionalidad mediante PCA, proyectando los documentos en un espacio bidimensional. Esta visualización facilita la identificación de agrupamientos y patrones en la distribución de las recetas según su contenido textual.
 
@@ -63,23 +63,23 @@ En conjunto, la representación TF-IDF ha permitido transformar eficazmente los 
 
 Para capturar la semántica de las palabras presentes en las recetas, se ha utilizado la técnica Word2Vec, que permite transformar cada término en un vector denso de alta dimensión, reflejando relaciones de similitud y contexto en el corpus analizado. El modelo se entrenó sobre los textos preprocesados de las recetas, utilizando una dimensión de 500 para los vectores, una ventana de contexto de 5 palabras y considerando todas las palabras presentes en el conjunto de datos.
 
-Una vez entrenado el modelo, es posible obtener el vector asociado a cualquier palabra del vocabulario, como por ejemplo 'turkey', lo que permite analizar su posición en el espacio semántico generado. Además, se pueden identificar las palabras más similares a un término dado, como `'place'`, mostrando las diez palabras que comparten mayor proximidad semántica según el modelo. Este análisis resulta útil para descubrir sinónimos, términos relacionados o agrupaciones temáticas dentro del corpus.
+Una vez entrenado el modelo, es posible obtener el vector asociado a cualquier palabra del vocabulario, como por ejemplo 'turkey', lo que permite analizar su posición en el espacio semántico generado. Además, se pueden identificar las palabras más similares a un término dado, como 'place', mostrando las diez palabras que comparten mayor proximidad semántica según el modelo. Este análisis resulta útil para descubrir sinónimos, términos relacionados o agrupaciones temáticas dentro del corpus.
 
-El vector correspondiente a la palabra `'place'` es un array de 500 dimensiones, que encapsula la información contextual aprendida a partir de su uso en las recetas. La forma y valores de este vector permiten su utilización en tareas posteriores de agrupamiento, reducción de dimensionalidad o visualización.
+El vector correspondiente a la palabra 'place' es un array de 500 dimensiones, que encapsula la información contextual aprendida a partir de su uso en las recetas. La forma y valores de este vector permiten su utilización en tareas posteriores de agrupamiento, reducción de dimensionalidad o visualización.
 
-Por último, se puede calcular la similitud entre dos palabras, como `'place'` y `'stock'`, utilizando la métrica de coseno sobre sus vectores. Este valor cuantifica el grado de relación semántica entre ambos términos en el contexto de las recetas, facilitando la exploración de asociaciones y patrones lingüísticos en el conjunto de datos.
+Por último, se puede calcular la similitud entre dos palabras, como 'place' y 'stock', utilizando la métrica de coseno sobre sus vectores. Este valor cuantifica el grado de relación semántica entre ambos términos en el contexto de las recetas, facilitando la exploración de asociaciones y patrones lingüísticos en el conjunto de datos.
 
 En resumen, la representación Word2Vec proporciona una forma potente y flexible de modelar el significado de las palabras en el corpus de recetas, permitiendo tanto el análisis exploratorio como la integración en modelos de aprendizaje automático más complejos.
 
 ### BERT:
 
-Para obtener una representación contextual avanzada de los textos de las recetas, se ha empleado BERT, un modelo preentrenado de lenguaje natural que permite capturar relaciones semánticas profundas y dependencias contextuales entre palabras. El proceso se ha centrado en extraer los embeddings de los documentos a partir del token especial `[CLS]`, que resume la información global de cada texto y es ampliamente utilizado para tareas de clasificación y regresión en NLP.
+Para obtener una representación contextual avanzada de los textos de las recetas, se ha empleado BERT, un modelo preentrenado de lenguaje natural que permite capturar relaciones semánticas profundas y dependencias contextuales entre palabras. El proceso se ha centrado en extraer los embeddings de los documentos a partir del token especial [CLS], que resume la información global de cada texto y es ampliamente utilizado para tareas de clasificación y regresión en NLP.
 
-El procedimiento comenzó cargando el tokenizador y el modelo preentrenado `bert-base-uncased`, configurado para devolver los estados ocultos de todas las capas. Se seleccionaron las columnas `directions` y `desc` de las primeras 100 recetas, concatenando su contenido para formar el texto de entrada de cada documento. Cada texto fue tokenizado, truncado a un máximo de 512 tokens y enriquecido con los tokens especiales `[CLS]` y `[SEP]`, siguiendo el formato requerido por BERT.
+El procedimiento comenzó cargando el tokenizador y el modelo preentrenado bert-base-uncased, configurado para devolver los estados ocultos de todas las capas. Se seleccionaron las columnas directions y desc de las primeras 100 recetas, concatenando su contenido para formar el texto de entrada de cada documento. Cada texto fue tokenizado, truncado a un máximo de 512 tokens y enriquecido con los tokens especiales [CLS] y [SEP], siguiendo el formato requerido por BERT.
 
 A continuación, los textos tokenizados se convirtieron en índices numéricos y se rellenaron con ceros para igualar la longitud máxima. Se generaron también las máscaras de segmento necesarias para el modelo. Los tensores resultantes se pasaron por BERT en modo evaluación, obteniendo como salida los vectores de estado oculto para cada token de cada documento.
 
-De cada documento, se extrajo el embedding correspondiente al token `[CLS]`, que actúa como una representación densa y contextualizada del texto completo. Estos embeddings se almacenaron en una matriz de tamaño `(n_documentos, 768)`, donde cada fila representa un documento en el espacio semántico aprendido por BERT.
+De cada documento, se extrajo el embedding correspondiente al token [CLS], que actúa como una representación densa y contextualizada del texto completo. Estos embeddings se almacenaron en una matriz de tamaño (n_documentos, 768), donde cada fila representa un documento en el espacio semántico aprendido por BERT.
 
 Esta representación permite capturar matices complejos del lenguaje y relaciones de alto nivel entre las recetas, superando las limitaciones de técnicas tradicionales como TF-IDF o Word2Vec. Los embeddings obtenidos pueden utilizarse directamente como entrada para modelos de regresión, clasificación o análisis exploratorio, facilitando la identificación de patrones y similitudes profundas en el corpus de recetas analizado.
 
@@ -97,7 +97,7 @@ Empleando los vectores generados por Word2Vec, cada receta fue representada por 
 
 ### Con BERT
 
-Se extrajeron los vectores correspondientes al token `[CLS]` de cada documento, que resumen la información global de la receta. Estos embeddings, de mayor dimensionalidad y capacidad expresiva, se emplearon como entrada para una red neuronal adaptada a este tipo de representación. El entrenamiento se realizó siguiendo el mismo pipeline, utilizando MSELoss y AdamW, y evaluando el rendimiento mediante MSE y R² sobre el conjunto de prueba. El uso de BERT permitió capturar relaciones complejas y matices lingüísticos que pueden mejorar la precisión en la predicción de la puntuación de las recetas.
+Se extrajeron los vectores correspondientes al token [CLS] de cada documento, que resumen la información global de la receta. Estos embeddings, de mayor dimensionalidad y capacidad expresiva, se emplearon como entrada para una red neuronal adaptada a este tipo de representación. El entrenamiento se realizó siguiendo el mismo pipeline, utilizando MSELoss y AdamW, y evaluando el rendimiento mediante MSE y R² sobre el conjunto de prueba. El uso de BERT permitió capturar relaciones complejas y matices lingüísticos que pueden mejorar la precisión en la predicción de la puntuación de las recetas.
 
 En conjunto, la comparación de los resultados obtenidos con las tres representaciones, TF-IDF, Word2Vec y BERT permitió analizar el impacto de cada técnica en el rendimiento de la red neuronal y seleccionar la estrategia más adecuada para el problema de predicción abordado.
 
@@ -115,7 +115,7 @@ Para la representación Word2Vec, cada receta se transformó en un vector denso 
 
 ### BERT
 
-En el caso de BERT, se emplearon los embeddings del token `[CLS]` extraídos de los primeros 100 documentos, dada la limitación de recursos computacionales. Estos vectores, de mayor riqueza contextual, se utilizaron como entrada para el modelo Ridge, repitiendo el proceso de división, entrenamiento y evaluación. Las métricas obtenidas reflejan la capacidad de los embeddings contextuales para capturar matices complejos del lenguaje y su impacto en la predicción de la puntuación de las recetas.
+En el caso de BERT, se emplearon los embeddings del token [CLS] extraídos de los primeros 100 documentos, dada la limitación de recursos computacionales. Estos vectores, de mayor riqueza contextual, se utilizaron como entrada para el modelo Ridge, repitiendo el proceso de división, entrenamiento y evaluación. Las métricas obtenidas reflejan la capacidad de los embeddings contextuales para capturar matices complejos del lenguaje y su impacto en la predicción de la puntuación de las recetas.
 
 ### Evaluación y comparación
 
@@ -131,15 +131,15 @@ La comparación de estos resultados permite analizar el impacto de cada técnica
 
 Se ha realizado un fine-tuning de BERT utilizando la librería Hugging Face Transformers. Este proceso permite adaptar un modelo generalista a la tarea específica de regresión sobre textos de recetas, optimizando su rendimiento para el problema planteado.
 
-El procedimiento comenzó seleccionando un subconjunto de datos, concretamente las primeras diez recetas procesadas, y extrayendo tanto las instrucciones (`directions`) como las puntuaciones (`rating`). Los datos se dividieron en conjuntos de entrenamiento y prueba, asegurando la aleatoriedad y la correcta alineación de los índices para evitar inconsistencias en las etiquetas.
+El procedimiento comenzó seleccionando un subconjunto de datos, concretamente las primeras diez recetas procesadas, y extrayendo tanto las instrucciones (directions) como las puntuaciones (rating). Los datos se dividieron en conjuntos de entrenamiento y prueba, asegurando la aleatoriedad y la correcta alineación de los índices para evitar inconsistencias en las etiquetas.
 
-A continuación, se utilizó el tokenizador `BertTokenizer` para convertir los textos en secuencias de tokens compatibles con el modelo BERT. Este paso incluyó la truncación y el padding de los textos a una longitud máxima de 128 tokens, garantizando que todos los ejemplos tuvieran el mismo formato de entrada.
+A continuación, se utilizó el tokenizador BertTokenizer para convertir los textos en secuencias de tokens compatibles con el modelo BERT. Este paso incluyó la truncación y el padding de los textos a una longitud máxima de 128 tokens, garantizando que todos los ejemplos tuvieran el mismo formato de entrada.
 
-Para facilitar el entrenamiento, se definió una clase personalizada `RecipeDataset`, que estructura los datos y etiquetas en el formato requerido por PyTorch. Esta clase permite acceder de manera eficiente a los ejemplos durante el proceso de entrenamiento y evaluación.
+Para facilitar el entrenamiento, se definió una clase personalizada RecipeDataset, que estructura los datos y etiquetas en el formato requerido por PyTorch. Esta clase permite acceder de manera eficiente a los ejemplos durante el proceso de entrenamiento y evaluación.
 
-El modelo seleccionado fue `BertForSequenceClassification` con una única salida, adaptado para tareas de regresión. Se configuraron los argumentos de entrenamiento mediante la clase `TrainingArguments`, especificando el número de épocas, el tamaño de los lotes, los pasos de calentamiento, el decaimiento del peso y la estrategia de evaluación.
+El modelo seleccionado fue BertForSequenceClassification con una única salida, adaptado para tareas de regresión. Se configuraron los argumentos de entrenamiento mediante la clase TrainingArguments, especificando el número de épocas, el tamaño de los lotes, los pasos de calentamiento, el decaimiento del peso y la estrategia de evaluación.
 
-El entrenamiento se llevó a cabo utilizando la clase `Trainer` de Hugging Face, que gestiona automáticamente el ciclo de entrenamiento, la evaluación periódica y el registro de métricas. Tras completar las épocas de entrenamiento, el modelo se evaluó sobre el conjunto de prueba para obtener una estimación objetiva de su rendimiento en datos no vistos.
+El entrenamiento se llevó a cabo utilizando la clase Trainer de Hugging Face, que gestiona automáticamente el ciclo de entrenamiento, la evaluación periódica y el registro de métricas. Tras completar las épocas de entrenamiento, el modelo se evaluó sobre el conjunto de prueba para obtener una estimación objetiva de su rendimiento en datos no vistos.
 
 ## Extensiones
 
@@ -147,11 +147,11 @@ Se han implementado diversas técnicas avanzadas de procesamiento de lenguaje na
 
 ### 1. Resumen automático de instrucciones
 
-Se ha implementado un sistema de resumen automático utilizando el pipeline de Hugging Face y el modelo preentrenado `facebook/bart-large-cnn`. Dado que las instrucciones de las recetas pueden ser extensas y contener pasos repetidos, el texto se divide en fragmentos de longitud adecuada y cada uno se resume individualmente. Los resúmenes parciales se combinan para obtener una versión condensada y coherente de las instrucciones originales, facilitando la comprensión rápida de los pasos principales de cada receta.
+Se ha implementado un sistema de resumen automático utilizando el pipeline de Hugging Face y el modelo preentrenado facebook/bart-large-cnn. Dado que las instrucciones de las recetas pueden ser extensas y contener pasos repetidos, el texto se divide en fragmentos de longitud adecuada y cada uno se resume individualmente. Los resúmenes parciales se combinan para obtener una versión condensada y coherente de las instrucciones originales, facilitando la comprensión rápida de los pasos principales de cada receta.
 
 ### 2. Análisis de bigramas en las instrucciones
 
-Para identificar patrones frecuentes en la redacción de las recetas, se ha realizado un análisis de bigramas sobre el campo `directions`. Tras tokenizar y extraer todos los pares de palabras consecutivas, se calcularon las frecuencias y se identificaron los diez bigramas más comunes. Este análisis revela combinaciones de acciones y términos recurrentes en la cocina, proporcionando información útil sobre la estructura típica de las instrucciones culinarias.
+Para identificar patrones frecuentes en la redacción de las recetas, se ha realizado un análisis de bigramas sobre el campo directions. Tras tokenizar y extraer todos los pares de palabras consecutivas, se calcularon las frecuencias y se identificaron los diez bigramas más comunes. Este análisis revela combinaciones de acciones y términos recurrentes en la cocina, proporcionando información útil sobre la estructura típica de las instrucciones culinarias.
 
 ### 3. Etiquetado gramatical
 
