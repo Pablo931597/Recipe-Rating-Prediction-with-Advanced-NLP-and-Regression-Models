@@ -1,5 +1,5 @@
-# Master_uc3m
-Uc3m projects
+# Master_uc3m - PROYECTO FINAL
+
 Convocatoria Ordinaria: Proyecto realizado por Emilio Muñoz Álvarez y Pablo Ebohon Serna
 
 Convocatoria Extraordinaria: Proyecto realizado por Pablo Ebohon Serna
