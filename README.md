@@ -180,17 +180,37 @@ Se ha implementado un sistema de resumen automático utilizando el pipeline de H
 
 Para identificar patrones frecuentes en la redacción de las recetas, se ha realizado un análisis de bigramas sobre el campo directions. Tras tokenizar y extraer todos los pares de palabras consecutivas, se calcularon las frecuencias y se identificaron los diez bigramas más comunes. Este análisis revela combinaciones de acciones y términos recurrentes en la cocina, proporcionando información útil sobre la estructura típica de las instrucciones culinarias.
 
+<p align="center">
+<img src="https://github.com/Pablo931597/Master-UC3m/blob/main/Captura%20de%20pantalla%202025-06-18%20a%20las%2020.09.23.png" alt="alt text2" width="500"/>
+</p>
+
 ### 3. Etiquetado gramatical
 
 Se ha aplicado el etiquetado gramatical a las instrucciones de las recetas utilizando las herramientas de NLTK. Este proceso asigna una categoría gramatical (sustantivo, verbo, adjetivo, etc.) a cada palabra, permitiendo analizar la composición sintáctica de las instrucciones. El etiquetado se ha realizado tanto sobre ejemplos individuales como sobre múltiples instrucciones.
+
+<p align="center">
+<img src="https://github.com/Pablo931597/Master-UC3m/blob/main/Captura%20de%20pantalla%202025-06-18%20a%20las%2020.09.43.png" alt="alt text2" width="500"/>
+</p>
+
 
 ### 4. Búsqueda de sinónimos con tesauros
 
 Se ha incorporado la búsqueda de sinónimos mediante el tesauro WordNet de NLTK. Esta funcionalidad permite identificar alternativas léxicas para palabras clave presentes en las recetas, lo que puede ser útil para tareas de normalización, expansión de vocabulario o generación de variantes de instrucciones. El sistema soporta tanto inglés como otros idiomas.
 
+Estos son algunos de los resultados obtenidos:
+'shuffle', 'mixing', 'blend', 'immix', 'mingle', 'commixture', 'merge', 'desegregate', 'combine', 'unify', 'coalesce', 'commix', 'premix']
+
 ### 5. Generación de recetas con modelos tipo transformer
 
 Se ha experimentado con la generación automática de recetas utilizando modelos de lenguaje generativo como GPT-2 y Llama. A partir de un prompt inicial, estos modelos son capaces de producir instrucciones completas y coherentes para nuevas recetas. El proceso incluye la codificación del prompt, la generación controlada del texto y la decodificación del resultado. Además, se ha comparado la generación con diferentes modelos, evaluando la creatividad y la calidad de las recetas producidas.
+
+Este es uno de los textos que se ha logrado generar con el código:
+Generated Recipe:
+How to make a simple apple pie:
+
+1. Cut the apples into small pieces.
+. Put the apple slices in a large bowl. Add the sugar and vanilla. Stir well. Pour the mixture into the bowl of a stand mixer fitted with a paddle attachment. Mix until the dough is smooth and fluffy. The dough will be very sticky. If you are using a dough hook, you can use a small bowl or a larger one. You can also use the same dough to form a ball. I used a 1/4 cup of flour. This dough can be made in any size. It will not be sticky, but it will take a long time to knead. Once the ball is knitted, it should be about 1 1⁄2 inches in diameter. Place the balls in the prepared bowl and knit until they are about 3/8 inch in thickness. Using a rolling pin, roll the remaining dough into a rectangle. Roll the rectangle out to about 2 inches
+
 
 ## Diferencias y mejoras entre la convocatoria ordinaria y la extraordinaria
 
