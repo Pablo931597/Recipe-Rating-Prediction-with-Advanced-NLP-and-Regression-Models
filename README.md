@@ -23,7 +23,7 @@ Finalmente, se filtraron las recetas correspondientes a estas cinco categorías 
 A continuavión se muestran algunas de las gráficas obtenidas:
 
 ![alt text](https://github.com/Pablo931597/Master-UC3m/blob/main/Captura%20de%20pantalla%202025-06-18%20a%20las%2012.33.03.png)
-
+![alt text](https://github.com/Pablo931597/Master-UC3m/edit/main/README.md#:~:text=Captura%20de%20pantalla-,2025%2D06%2D18,-a%20las%2012.33.38)
 
 ## Procesamiento de los textos de las recetas
 Para poder emplear redes neuronales y algoritmos de regresión, tenemos que procesar el texto de manera que se transformen en datos que dichos algoritmos puedan procesr.
