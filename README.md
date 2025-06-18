@@ -22,7 +22,7 @@ Además, se extrajeron todas las categorías presentes en el DataFrame y se orde
 
 Finalmente, se filtraron las recetas correspondientes a estas cinco categorías principales y se calculó la media de sus puntuaciones. Este enfoque permite comparar de manera directa el desempeño de las categorías más populares y observar si existe alguna relación entre la frecuencia de aparición y la valoración recibida por los usuarios. Los resultados obtenidos ofrecen una visión clara sobre qué tipos de recetas tienden a recibir mejores valoraciones y cuáles son las preferencias predominantes en el conjunto de datos analizado.
 
-A continuavión se muestran algunas de las gráficas obtenidas:
+A continuación se muestran algunas de las gráficas obtenidas:
 
 ![alt text](https://github.com/Pablo931597/Master-UC3m/blob/main/Captura%20de%20pantalla%202025-06-18%20a%20las%2012.33.03.png)
 ![alt text2](https://github.com/Pablo931597/Master-UC3m/blob/main/Captura%20de%20pantalla%202025-06-18%20a%20las%2012.33.38.png)
@@ -95,7 +95,7 @@ Este resultado refleja la capacidad de BERT para generar representaciones densas
 
 ## Entrenamiento y rendimiento de una red neuronal
 
-Para abordar la predicción de la puntuación de las recetas, se ha implementado una red neuronal utilizando PyTorch, una de las librerías más versátiles y extendidas para el desarrollo de modelos de aprendizaje profundo. El proceso de entrenamiento y evaluación se ha estructurado siguiendo las mejores prácticas para problemas de regresión supervisada, asegurando la correcta generalización del modelo y la interpretación de sus resultados.
+Para abordar la predicción de la puntuación de las recetas, se ha implementado una red neuronal utilizando PyTorch, una de las librerías más versátiles y extendidas para el desarrollo de modelos de aprendizaje profundo. El proceso de entrenamiento y evaluación para problemas de regresión supervisada, asegurando la correcta generalización del modelo y la interpretación de sus resultados.
 
 ### Con TF-IDF
 
@@ -113,7 +113,7 @@ En conjunto, la comparación de los resultados obtenidos con las tres representa
 
 ### Resultados 
 
-A continuacion se muestran los resultados obtenidos.
+A continuación se muestran los resultados obtenidos.
 
 <p align="center">
 <img src="https://github.com/Pablo931597/Master-UC3m/blob/main/Captura%20de%20pantalla%202025-06-18%20a%20las%2019.28.24.png" alt="alt text2" width="500"/>
@@ -178,7 +178,7 @@ El entrenamiento se llevó a cabo utilizando la clase Trainer de Hugging Face, q
 
 ## Extensiones
 
-Se han implementado diversas técnicas avanzadas de procesamiento de lenguaje natural y generación de texto, ampliando el alcance del proyecto más allá de los requisitos básicos. Estas extensiones permiten profundizar en el análisis de los datos, enriquecer la interpretación de los resultados y experimentar con modelos generativos de última generación.
+Se han implementado diversas técnicas avanzadas de procesamiento de lenguaje natural y generación de texto, ampliando el alcance del proyecto más allá de los requisitos básicos. Estas extensiones permiten profundizar en el análisis de los datos, enriquecer la interpretación de los resultados y experimentar con modelos generativos.
 
 ### 1. Resumen automático de instrucciones
 
