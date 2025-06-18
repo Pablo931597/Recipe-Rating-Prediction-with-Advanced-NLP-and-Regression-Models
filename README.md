@@ -58,6 +58,8 @@ Finalmente, se calculó la similitud entre documentos utilizando la métrica de 
 
 En conjunto, la representación TF-IDF ha permitido transformar eficazmente los textos de las recetas en vectores numéricos interpretables, facilitando tanto el análisis como la posterior aplicación de modelos de aprendizaje automático para la predicción de la puntuación de las recetas.
 
+![alt text2](https://github.com/Pablo931597/Master-UC3m/blob/main/Captura%20de%20pantalla%202025-06-18%20a%20las%2012.33.38.png)
+
 
 ### Word2Vec: 
 
