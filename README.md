@@ -90,6 +90,9 @@ Esta representación permite capturar matices complejos del lenguaje y relacione
 <img src="https://github.com/Pablo931597/Master-UC3m/blob/main/Captura%20de%20pantalla%202025-06-18%20a%20las%2019.27.26.png" alt="alt text2" width="500"/>
 </p>
 
+El hecho de que la mayor parte de los valores se sitúe cerca de cero indica que, para la mayoría de las recetas, los embeddings generados por BERT no presentan valores extremos, lo que sugiere una cierta homogeneidad en la representación semántica de los textos procesados. Sin embargo, la presencia de valores atípicos puede deberse a recetas con descripciones o instrucciones muy diferentes al resto, o a la existencia de términos poco frecuentes que afectan de manera significativa la representación vectorial.
+Este resultado refleja la capacidad de BERT para generar representaciones densas y contextuales de los textos, permitiendo identificar tanto patrones comunes como casos singulares dentro del corpus de recetas.
+
 ## Entrenamiento y rendimiento de una red neuronal
 
 Para abordar la predicción de la puntuación de las recetas, se ha implementado una red neuronal utilizando PyTorch, una de las librerías más versátiles y extendidas para el desarrollo de modelos de aprendizaje profundo. El proceso de entrenamiento y evaluación se ha estructurado siguiendo las mejores prácticas para problemas de regresión supervisada, asegurando la correcta generalización del modelo y la interpretación de sus resultados.
@@ -117,6 +120,8 @@ A continuacion se muestran los resultados obtenidos.
 <img src="https://github.com/Pablo931597/Master-UC3m/blob/main/Captura%20de%20pantalla%202025-06-18%20a%20las%2019.28.35.png" alt="alt text2" width="500"/>
 <img src="https://github.com/Pablo931597/Master-UC3m/blob/main/Captura%20de%20pantalla%202025-06-18%20a%20las%2019.28.55.png" alt="alt text2" width="500"/>
 </p>
+
+Estos resultados evidencian que el uso de representaciones contextuales avanzadas como BERT, en combinación con una red neuronal en PyTorch, permite obtener un rendimiento significativamente superior en la predicción de la puntuación de recetas frente a técnicas tradicionales como TF-IDF y Word2Vec. La red neuronal es capaz de aprovechar la riqueza semántica de los embeddings de BERT, logrando una mejor generalización y precisión en el problema de regresión planteado.
 
 ## Entrenamiento del modelo de regresión Ridge con Scikit-learn
 
