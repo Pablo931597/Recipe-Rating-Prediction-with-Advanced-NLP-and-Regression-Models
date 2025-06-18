@@ -58,8 +58,9 @@ Finalmente, se calculó la similitud entre documentos utilizando la métrica de 
 
 En conjunto, la representación TF-IDF ha permitido transformar eficazmente los textos de las recetas en vectores numéricos interpretables, facilitando tanto el análisis como la posterior aplicación de modelos de aprendizaje automático para la predicción de la puntuación de las recetas.
 
-![alt text2](https://github.com/Pablo931597/Master-UC3m/blob/main/Captura%20de%20pantalla%202025-06-18%20a%20las%2012.33.38.png)
-
+<p align="center">
+<img src="https://github.com/Pablo931597/Master-UC3m/blob/main/Captura%20de%20pantalla%202025-06-18%20a%20las%2019.24.35.png" alt="alt text2" width="800"/>
+</p>
 
 ### Word2Vec: 
 
@@ -85,6 +86,10 @@ De cada documento, se extrajo el embedding correspondiente al token [CLS], que a
 
 Esta representación permite capturar matices complejos del lenguaje y relaciones de alto nivel entre las recetas, superando las limitaciones de técnicas tradicionales como TF-IDF o Word2Vec. Los embeddings obtenidos pueden utilizarse directamente como entrada para modelos de regresión, clasificación o análisis exploratorio, facilitando la identificación de patrones y similitudes profundas en el corpus de recetas analizado.
 
+<p align="center">
+<img src="https://github.com/Pablo931597/Master-UC3m/blob/main/Captura%20de%20pantalla%202025-06-18%20a%20las%2019.27.26.png" alt="alt text2" width="500"/>
+</p>
+
 ## Entrenamiento y rendimiento de una red neuronal
 
 Para abordar la predicción de la puntuación de las recetas, se ha implementado una red neuronal utilizando PyTorch, una de las librerías más versátiles y extendidas para el desarrollo de modelos de aprendizaje profundo. El proceso de entrenamiento y evaluación se ha estructurado siguiendo las mejores prácticas para problemas de regresión supervisada, asegurando la correcta generalización del modelo y la interpretación de sus resultados.
@@ -102,6 +107,16 @@ Empleando los vectores generados por Word2Vec, cada receta fue representada por 
 Se extrajeron los vectores correspondientes al token [CLS] de cada documento, que resumen la información global de la receta. Estos embeddings, de mayor dimensionalidad y capacidad expresiva, se emplearon como entrada para una red neuronal adaptada a este tipo de representación. El entrenamiento se realizó siguiendo el mismo pipeline, utilizando MSELoss y AdamW, y evaluando el rendimiento mediante MSE y R² sobre el conjunto de prueba. El uso de BERT permitió capturar relaciones complejas y matices lingüísticos que pueden mejorar la precisión en la predicción de la puntuación de las recetas.
 
 En conjunto, la comparación de los resultados obtenidos con las tres representaciones, TF-IDF, Word2Vec y BERT permitió analizar el impacto de cada técnica en el rendimiento de la red neuronal y seleccionar la estrategia más adecuada para el problema de predicción abordado.
+
+### Resultados 
+
+A continuacion se muestran los resultados obtenidos.
+
+<p align="center">
+<img src="https://github.com/Pablo931597/Master-UC3m/blob/main/Captura%20de%20pantalla%202025-06-18%20a%20las%2019.28.24.png" alt="alt text2" width="500"/>
+<img src="https://github.com/Pablo931597/Master-UC3m/blob/main/Captura%20de%20pantalla%202025-06-18%20a%20las%2019.28.35.png" alt="alt text2" width="500"/>
+<img src="https://github.com/Pablo931597/Master-UC3m/blob/main/Captura%20de%20pantalla%202025-06-18%20a%20las%2019.28.55.png" alt="alt text2" width="500"/>
+</p>
 
 ## Entrenamiento del modelo de regresión Ridge con Scikit-learn
 
@@ -129,6 +144,12 @@ Score: valor propio del modelo.
 
 La comparación de estos resultados permite analizar el impacto de cada técnica de vectorización en la capacidad predictiva del modelo Ridge y seleccionar la estrategia más adecuada para el problema de regresión sobre recetas de cocina.
 
+Estos son los resultados obtenidos al ejecutar el programa.
+
+<p align="center">
+<img src="https://github.com/Pablo931597/Master-UC3m/blob/main/Captura%20de%20pantalla%202025-06-18%20a%20las%2019.29.40.png" alt="alt text2" width="500"/>
+</p>
+
 ## Fine-Tuning de un Modelo Transformer con Hugging Face
 
 Se ha realizado un fine-tuning de BERT utilizando la librería Hugging Face Transformers. Este proceso permite adaptar un modelo generalista a la tarea específica de regresión sobre textos de recetas, optimizando su rendimiento para el problema planteado.
@@ -142,6 +163,10 @@ Para facilitar el entrenamiento, se definió una clase personalizada RecipeDatas
 El modelo seleccionado fue BertForSequenceClassification con una única salida, adaptado para tareas de regresión. Se configuraron los argumentos de entrenamiento mediante la clase TrainingArguments, especificando el número de épocas, el tamaño de los lotes, los pasos de calentamiento, el decaimiento del peso y la estrategia de evaluación.
 
 El entrenamiento se llevó a cabo utilizando la clase Trainer de Hugging Face, que gestiona automáticamente el ciclo de entrenamiento, la evaluación periódica y el registro de métricas. Tras completar las épocas de entrenamiento, el modelo se evaluó sobre el conjunto de prueba para obtener una estimación objetiva de su rendimiento en datos no vistos.
+
+<p align="center">
+<img src="https://github.com/Pablo931597/Master-UC3m/blob/main/Captura%20de%20pantalla%202025-06-18%20a%20las%2019.29.56.png" alt="alt text2" width="500"/>
+</p>
 
 ## Extensiones
 
