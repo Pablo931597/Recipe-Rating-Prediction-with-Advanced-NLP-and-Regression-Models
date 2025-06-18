@@ -63,7 +63,7 @@ En conjunto, la representación TF-IDF ha permitido transformar eficazmente los 
 
 Para capturar la semántica de las palabras presentes en las recetas, se ha utilizado la técnica Word2Vec, que permite transformar cada término en un vector denso de alta dimensión, reflejando relaciones de similitud y contexto en el corpus analizado. El modelo se entrenó sobre los textos preprocesados de las recetas, utilizando una dimensión de 500 para los vectores, una ventana de contexto de 5 palabras y considerando todas las palabras presentes en el conjunto de datos.
 
-Una vez entrenado el modelo, es posible obtener el vector asociado a cualquier palabra del vocabulario, como por ejemplo `'turkey'`, lo que permite analizar su posición en el espacio semántico generado. Además, se pueden identificar las palabras más similares a un término dado, como `'place'`, mostrando las diez palabras que comparten mayor proximidad semántica según el modelo. Este análisis resulta útil para descubrir sinónimos, términos relacionados o agrupaciones temáticas dentro del corpus.
+Una vez entrenado el modelo, es posible obtener el vector asociado a cualquier palabra del vocabulario, como por ejemplo 'turkey', lo que permite analizar su posición en el espacio semántico generado. Además, se pueden identificar las palabras más similares a un término dado, como `'place'`, mostrando las diez palabras que comparten mayor proximidad semántica según el modelo. Este análisis resulta útil para descubrir sinónimos, términos relacionados o agrupaciones temáticas dentro del corpus.
 
 El vector correspondiente a la palabra `'place'` es un array de 500 dimensiones, que encapsula la información contextual aprendida a partir de su uso en las recetas. La forma y valores de este vector permiten su utilización en tareas posteriores de agrupamiento, reducción de dimensionalidad o visualización.
 
@@ -153,7 +153,7 @@ Se ha implementado un sistema de resumen automático utilizando el pipeline de H
 
 Para identificar patrones frecuentes en la redacción de las recetas, se ha realizado un análisis de bigramas sobre el campo `directions`. Tras tokenizar y extraer todos los pares de palabras consecutivas, se calcularon las frecuencias y se identificaron los diez bigramas más comunes. Este análisis revela combinaciones de acciones y términos recurrentes en la cocina, proporcionando información útil sobre la estructura típica de las instrucciones culinarias.
 
-### 3. Etiquetado gramatical (Part-of-Speech Tagging)
+### 3. Etiquetado gramatical
 
 Se ha aplicado el etiquetado gramatical a las instrucciones de las recetas utilizando las herramientas de NLTK. Este proceso asigna una categoría gramatical (sustantivo, verbo, adjetivo, etc.) a cada palabra, permitiendo analizar la composición sintáctica de las instrucciones. El etiquetado se ha realizado tanto sobre ejemplos individuales como sobre múltiples instrucciones.
 
