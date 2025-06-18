@@ -99,15 +99,72 @@ Se extrajeron los vectores correspondientes al token `[CLS]` de cada documento, 
 
 En conjunto, la comparación de los resultados obtenidos con las tres representaciones, TF-IDF, Word2Vec y BERT permitió analizar el impacto de cada técnica en el rendimiento de la red neuronal y seleccionar la estrategia más adecuada para el problema de predicción abordado.
 
-## Entrenamiento modelo de regresión Ridge:
-Para el modelo de regresión nos basamos en el regresor lineal Ridge.
-Las prestaciones obtenidas tambien fueron similares (sobretodo TF-IDF y W2V), siendo la mejor otra vez la obtenida en BERT, con MSE=0.88 y R2=-0.48.
+## Entrenamiento del modelo de regresión Ridge con Scikit-learn
 
-La conclusión final fue que las mejores prestaciones fueron las de la red neuronal utilizando BERT,
-aunque no es una mejoría muy significativa con respecto al Ridge utilizando el mismo conjunto de entrenamiento.
+Para evaluar el rendimiento de técnicas de vectorización textual en la predicción de la puntuación de recetas, se ha implementado un modelo de regresión Ridge utilizando la librería Scikit-learn. Este modelo se ha entrenado y validado sobre las representaciones TF-IDF, Word2Vec y BERT, permitiendo comparar la capacidad predictiva de cada enfoque en un entorno controlado y reproducible.
 
-También se ha hecho uso del fine tuning del Hugging Face, comparando el rendimiento del BERT no usándolo. Éste realiza un ajuste de nuestro conjunto de texto (al ser un modelo preentrenado con un conjunto extenso de datos)
-para nuestra tarea específica (en este caso, recetas de cocina). Las prestaciones fueron mejores
+### Con TF-IDF
+
+En primer lugar, se utilizó la matriz TF-IDF generada a partir de los textos preprocesados como entrada para el modelo Ridge. El conjunto de datos se dividió en entrenamiento y prueba (80/20), asegurando la aleatoriedad mediante una semilla fija. El modelo se entrenó con una determinada tolerancia y se evaluó utilizando métricas estándar de regresión: error absoluto medio, error cuadrático medio, coeficiente de determinación y el score propio del modelo. Estos indicadores permiten cuantificar la precisión y la capacidad explicativa del modelo sobre datos no vistos.
+
+### Word2Vec
+
+Para la representación Word2Vec, cada receta se transformó en un vector denso calculando el promedio de los embeddings de sus palabras. Se verificó que todos los vectores tuvieran la misma dimensión y se identificaron posibles documentos sin representación válida. Tras dividir los datos en entrenamiento y prueba, se entrenó el modelo Ridge bajo las mismas condiciones que en el caso TF-IDF. Las métricas obtenidas permiten comparar la eficacia de los embeddings semánticos frente a las representaciones basadas en frecuencia de términos.
+
+### BERT
+
+En el caso de BERT, se emplearon los embeddings del token `[CLS]` extraídos de los primeros 100 documentos, dada la limitación de recursos computacionales. Estos vectores, de mayor riqueza contextual, se utilizaron como entrada para el modelo Ridge, repitiendo el proceso de división, entrenamiento y evaluación. Las métricas obtenidas reflejan la capacidad de los embeddings contextuales para capturar matices complejos del lenguaje y su impacto en la predicción de la puntuación de las recetas.
+
+### Evaluación y comparación
+
+En cada uno de los tres enfoques, el modelo Ridge se evaluó mediante las siguientes métricas:
+MAE: mide el error promedio absoluto entre las predicciones y los valores reales.
+MSE: cuantifica el error cuadrático medio, penalizando más los errores grandes.
+R²: indica la proporción de la varianza explicada por el modelo.
+Score: valor propio del modelo.
+
+La comparación de estos resultados permite analizar el impacto de cada técnica de vectorización en la capacidad predictiva del modelo Ridge y seleccionar la estrategia más adecuada para el problema de regresión sobre recetas de cocina.
+
+## Fine-Tuning de un Modelo Transformer con Hugging Face
+
+Se ha realizado un fine-tuning de BERT utilizando la librería Hugging Face Transformers. Este proceso permite adaptar un modelo generalista a la tarea específica de regresión sobre textos de recetas, optimizando su rendimiento para el problema planteado.
+
+El procedimiento comenzó seleccionando un subconjunto de datos, concretamente las primeras diez recetas procesadas, y extrayendo tanto las instrucciones (`directions`) como las puntuaciones (`rating`). Los datos se dividieron en conjuntos de entrenamiento y prueba, asegurando la aleatoriedad y la correcta alineación de los índices para evitar inconsistencias en las etiquetas.
+
+A continuación, se utilizó el tokenizador `BertTokenizer` para convertir los textos en secuencias de tokens compatibles con el modelo BERT. Este paso incluyó la truncación y el padding de los textos a una longitud máxima de 128 tokens, garantizando que todos los ejemplos tuvieran el mismo formato de entrada.
+
+Para facilitar el entrenamiento, se definió una clase personalizada `RecipeDataset`, que estructura los datos y etiquetas en el formato requerido por PyTorch. Esta clase permite acceder de manera eficiente a los ejemplos durante el proceso de entrenamiento y evaluación.
+
+El modelo seleccionado fue `BertForSequenceClassification` con una única salida, adaptado para tareas de regresión. Se configuraron los argumentos de entrenamiento mediante la clase `TrainingArguments`, especificando el número de épocas, el tamaño de los lotes, los pasos de calentamiento, el decaimiento del peso y la estrategia de evaluación.
+
+El entrenamiento se llevó a cabo utilizando la clase `Trainer` de Hugging Face, que gestiona automáticamente el ciclo de entrenamiento, la evaluación periódica y el registro de métricas. Tras completar las épocas de entrenamiento, el modelo se evaluó sobre el conjunto de prueba para obtener una estimación objetiva de su rendimiento en datos no vistos.
+
+## Extensiones
+
+Se han implementado diversas técnicas avanzadas de procesamiento de lenguaje natural y generación de texto, ampliando el alcance del proyecto más allá de los requisitos básicos. Estas extensiones permiten profundizar en el análisis de los datos, enriquecer la interpretación de los resultados y experimentar con modelos generativos de última generación.
+
+### 1. Resumen automático de instrucciones
+
+Se ha implementado un sistema de resumen automático utilizando el pipeline de Hugging Face y el modelo preentrenado `facebook/bart-large-cnn`. Dado que las instrucciones de las recetas pueden ser extensas y contener pasos repetidos, el texto se divide en fragmentos de longitud adecuada y cada uno se resume individualmente. Los resúmenes parciales se combinan para obtener una versión condensada y coherente de las instrucciones originales, facilitando la comprensión rápida de los pasos principales de cada receta.
+
+### 2. Análisis de bigramas en las instrucciones
+
+Para identificar patrones frecuentes en la redacción de las recetas, se ha realizado un análisis de bigramas sobre el campo `directions`. Tras tokenizar y extraer todos los pares de palabras consecutivas, se calcularon las frecuencias y se identificaron los diez bigramas más comunes. Este análisis revela combinaciones de acciones y términos recurrentes en la cocina, proporcionando información útil sobre la estructura típica de las instrucciones culinarias.
+
+### 3. Etiquetado gramatical (Part-of-Speech Tagging)
+
+Se ha aplicado el etiquetado gramatical a las instrucciones de las recetas utilizando las herramientas de NLTK. Este proceso asigna una categoría gramatical (sustantivo, verbo, adjetivo, etc.) a cada palabra, permitiendo analizar la composición sintáctica de las instrucciones. El etiquetado se ha realizado tanto sobre ejemplos individuales como sobre múltiples instrucciones.
+
+### 4. Búsqueda de sinónimos con tesauros
+
+Se ha incorporado la búsqueda de sinónimos mediante el tesauro WordNet de NLTK. Esta funcionalidad permite identificar alternativas léxicas para palabras clave presentes en las recetas, lo que puede ser útil para tareas de normalización, expansión de vocabulario o generación de variantes de instrucciones. El sistema soporta tanto inglés como otros idiomas.
+
+### 5. Generación de recetas con modelos tipo transformer
+
+Se ha experimentado con la generación automática de recetas utilizando modelos de lenguaje generativo como GPT-2 y Llama. A partir de un prompt inicial, estos modelos son capaces de producir instrucciones completas y coherentes para nuevas recetas. El proceso incluye la codificación del prompt, la generación controlada del texto y la decodificación del resultado. Además, se ha comparado la generación con diferentes modelos, evaluando la creatividad y la calidad de las recetas producidas.
+
+
+
 
 
 
