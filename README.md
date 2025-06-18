@@ -22,7 +22,7 @@ Finalmente, se filtraron las recetas correspondientes a estas cinco categorías 
 
 A continuavión se muestran algunas de las gráficas obtenidas:
 
-![alt text] (https://github.com/Pablo931597/Master-UC3m/blob/main/Captura%20de%20pantalla%202025-06-18%20a%20las%2012.33.03.png)
+![alt text](https://github.com/Pablo931597/Master-UC3m/blob/main/Captura%20de%20pantalla%202025-06-18%20a%20las%2012.33.03.png)
 
 
 ## Procesamiento de los textos de las recetas
