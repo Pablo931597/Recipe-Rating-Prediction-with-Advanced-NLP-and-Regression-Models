@@ -21,6 +21,10 @@ Además, se extrajeron todas las categorías presentes en el DataFrame y se orde
 Finalmente, se filtraron las recetas correspondientes a estas cinco categorías principales y se calculó la media de sus puntuaciones. Este enfoque permite comparar de manera directa el desempeño de las categorías más populares y observar si existe alguna relación entre la frecuencia de aparición y la valoración recibida por los usuarios. Los resultados obtenidos ofrecen una visión clara sobre qué tipos de recetas tienden a recibir mejores valoraciones y cuáles son las preferencias predominantes en el conjunto de datos analizado.
 
 A continuavión se muestran algunas de las gráficas obtenidas:
+
+![alt text] (https://github.com/Pablo931597/Master-UC3m/blob/main/Captura%20de%20pantalla%202025-06-18%20a%20las%2012.33.03.png)
+
+
 ## Procesamiento de los textos de las recetas
 Para poder emplear redes neuronales y algoritmos de regresión, tenemos que procesar el texto de manera que se transformen en datos que dichos algoritmos puedan procesr.
 Para ello haremos uso de 3 tipos distintos de NLP: TF-IDF, Word2Vec y BERT.
