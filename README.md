@@ -163,6 +163,9 @@ Se ha incorporado la búsqueda de sinónimos mediante el tesauro WordNet de NLTK
 
 Se ha experimentado con la generación automática de recetas utilizando modelos de lenguaje generativo como GPT-2 y Llama. A partir de un prompt inicial, estos modelos son capaces de producir instrucciones completas y coherentes para nuevas recetas. El proceso incluye la codificación del prompt, la generación controlada del texto y la decodificación del resultado. Además, se ha comparado la generación con diferentes modelos, evaluando la creatividad y la calidad de las recetas producidas.
 
+## Diferencias y mejoras entre la convocatoria ordinaria y la extraordinaria
+
+
 
 
 
