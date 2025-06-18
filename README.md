@@ -1,6 +1,7 @@
 # Master_uc3m
 Uc3m projects
-Proyecto realizado por Emilio Muñoz Álvarez y Pablo Ebohon Serna
+Convocatoria Ordinaria: Proyecto realizado por Emilio Muñoz Álvarez y Pablo Ebohon Serna
+Convocatoria Extraordinaria: Proyecto realizado por Pablo Ebohon Serna
 
 ## Introducción
 
@@ -165,9 +166,24 @@ Se ha experimentado con la generación automática de recetas utilizando modelos
 
 ## Diferencias y mejoras entre la convocatoria ordinaria y la extraordinaria
 
+Se han mejorado distintos aspectos en comparación con el trabajo entregado en la convocatoria ordinaria atendiendo a las indicaciones que los profesores hicieron durante la defensa del trabajo. Las diversas mejoras se detallan a continuación.
 
+### 1. Estructura y organización
 
+El README presenta una estructura mucho más elaborada y detallada, con secciones claramente diferenciadas para cada etapa del proyecto: introducción, análisis de categorías, procesamiento de datos, técnicas de vectorización, entrenamiento de modelos, evaluación y extensiones. 
 
+### 2. Profundidad en la explicación de cada apartado
 
+Se ha utilizado una redacción más clara, precisa y profesional, con explicaciones completas y un lenguaje técnico adecuado. Cada sección describe de manera precisa cómo se ha implementado cada técnica, incluyendo explicaciones sobre el preprocesamiento, la construcción de los modelos y la interpretación de los resultados. Se explican los pasos seguidos, las librerías utilizadas y los criterios de evaluación.
 
+### 3. Inclusión de ejemplos y resultados
 
+El README incorpora ejemplos concretos de resultados obtenidos, como la visualización de las categorías mejor valoradas, la representación de palabras relevantes mediante TF-IDF, la comparación de métricas de rendimiento entre modelos y la inclusión de gráficos y análisis visuales.
+
+### 4. Ampliación de las extensiones
+
+Además del resumen automático de instrucciones, se han añadido análisis de bigramas, etiquetado gramatical, búsqueda de sinónimos y generación automática de recetas con modelos generativos. Estas extensiones demuestran que se ha ampliado el alcance del proyecto más allá de los requisitos mínimos.
+
+### 5. Evaluación crítica y comparativa
+
+Se realiza un análisis crítico de los resultados, comparando el rendimiento de las distintas técnicas y modelos, y justificando la elección de las mejores estrategias. Se discuten las limitaciones y se proponen posibles mejoras.
