@@ -2,17 +2,25 @@
 Uc3m projects
 Proyecto realizado por Emilio Muñoz Álvarez y Pablo Ebohon Serna
 
-El tema principal del proyecto trata sobre un análisis de recetas de cocina y posterior predicción de sus valoraciones con modelos entrenados basados en algoritmos de regresión y redes neuronales,
-para comparar el rendimiento de cada una en base a sus resultados.
+## Introducción
 
-Profundizando más en dicho proyecto, el conjunto de datos que vamos a tratar es un fichero JSON que almacena 20130 recetas distintas,
-en las que se detallaan una serie de caracterísiticas que son: título, ingredientes, categoría, receta, calorías, grasa, sodio y fecha de publicación.
-Algunas de las características como título, ingredientes, receta y categoría, contienen texto tales como frases o palabras concretas, a diferencia del resto de características que son numéricas.
-Es por ello que hay que realizar técnicas de procesamiento de lenguaje natural (NLP), para poder utilizarlo como conjunto de entrenamiento tanto en las redes neuronales como algoritmos de regresión.
+Este proyecto tiene como objetivo aplicar técnicas avanzadas de procesamiento y análisis de datos textuales para abordar una tarea de aprendizaje automático centrada en documentos de recetas de cocina. Se tendrá que resolver un problema de regresión, utilizando diferentes representaciones vectoriales de texto y estrategias de aprendizaje automático, con el fin de predecir la puntuación de las recetas a partir de la información textual y los metadatos disponibles.
 
-## Análisis de las categorías
-Realizamos una breve comparación de algunas de las categorías, donde vemos su valoración media obtenida (comparaciñon sobre 5 o 6 categorías distintas).
+Para la realización de este proyecto se utilizará un fichero JSON, proporcionado en la asignatura. El conjunto de datos utilizado contiene más de 20,000 recetas, incluyendo información textual como instrucciones, descripciones, categorías y títulos, así como variables numéricas como valoraciones, grasas, proteínas, calorías, sodio, ingredientes y fecha de publicación. El desarrollo del proyecto implica el procesado de los textos, la representación vectorial de los documentos mediante técnicas como TF-IDF, Word2Vec y embeddings contextuales basados en Transformers, y el entrenamiento y evaluación de modelos de regresión utilizando redes neuronales.
 
+Además, se realiza una comparación de los resultados obtenidos con un modelo preentrenado de Hugging Face para regresión, y se lleva a cabo un análisis crítico de los resultados apoyado en métricas y visualizaciones adecuadas para problemas de regresión.
+
+## Análisis de las Categorías
+
+Para comprender la influencia de las distintas categorías en la puntuación de las recetas, se ha realizado un análisis exhaustivo de la columna categories del conjunto de datos. En primer lugar, se ha asegurado que esta columna estuviera limpia y en un formato utilizable, desglosando las listas de categorías para que cada fila represente una única categoría asociada a una receta.
+
+Posteriormente, se agruparon las recetas por categoría y se calculó la media de la puntuación (rating) para cada una de ellas. Este procedimiento permitió identificar las categorías con mayor valoración promedio, mostrando las diez categorías mejor puntuadas del conjunto de datos. Este análisis es útil para detectar tendencias y preferencias dentro de la comunidad de usuarios que valoran las recetas.
+
+Además, se extrajeron todas las categorías presentes en el DataFrame y se ordenaron según su frecuencia de aparición. De este modo, se identificaron las categorías más representadas en el conjunto de datos, lo que permite enfocar el análisis en aquellas con mayor relevancia estadística. A partir de este listado, se seleccionaron las cinco categorías más frecuentes para analizar en detalle su puntuación media.
+
+Finalmente, se filtraron las recetas correspondientes a estas cinco categorías principales y se calculó la media de sus puntuaciones. Este enfoque permite comparar de manera directa el desempeño de las categorías más populares y observar si existe alguna relación entre la frecuencia de aparición y la valoración recibida por los usuarios. Los resultados obtenidos ofrecen una visión clara sobre qué tipos de recetas tienden a recibir mejores valoraciones y cuáles son las preferencias predominantes en el conjunto de datos analizado.
+
+A continuavión se muestran algunas de las gráficas obtenidas:
 ## Procesamiento de los textos de las recetas
 Para poder emplear redes neuronales y algoritmos de regresión, tenemos que procesar el texto de manera que se transformen en datos que dichos algoritmos puedan procesr.
 Para ello haremos uso de 3 tipos distintos de NLP: TF-IDF, Word2Vec y BERT.
