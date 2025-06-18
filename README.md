@@ -10,7 +10,7 @@ Este proyecto tiene como objetivo aplicar técnicas avanzadas de procesamiento y
 
 Para la realización de este proyecto se utilizará un fichero JSON, proporcionado en la asignatura. El conjunto de datos utilizado contiene más de 20,000 recetas, incluyendo información textual como instrucciones, descripciones, categorías y títulos, así como variables numéricas como valoraciones, grasas, proteínas, calorías, sodio, ingredientes y fecha de publicación. El desarrollo del proyecto implica el procesado de los textos, la representación vectorial de los documentos mediante técnicas como TF-IDF, Word2Vec y embeddings contextuales basados en Transformers, y el entrenamiento y evaluación de modelos de regresión utilizando redes neuronales.
 
-Además, se realiza una comparación de los resultados obtenidos con un modelo preentrenado de Hugging Face para regresión, y se lleva a cabo un análisis crítico de los resultados apoyado en métricas y visualizaciones adecuadas para problemas de regresión.
+Además, se realiza una comparación de los resultados obtenidos con un modelo preentrenado de Hugging Face para regresión, y se lleva a cabo un análisis crítico de los resultados.
 
 ## Análisis de las Categorías
 
