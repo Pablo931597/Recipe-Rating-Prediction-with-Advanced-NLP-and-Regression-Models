@@ -1,8 +1,6 @@
-# Master_uc3m - PROYECTO FINAL
+# Recipe Rating Prediction with Advanced NLP and Regression Models
 
-Convocatoria Ordinaria: Proyecto realizado por Emilio Muñoz Álvarez y Pablo Ebohon Serna
-
-Convocatoria Extraordinaria: Proyecto realizado por Pablo Ebohon Serna
+Proyecto realizado por Emilio Muñoz Álvarez y Pablo Ebohon Serna
 
 ## Introducción
 
